@@ -14,26 +14,29 @@ url_bar_and_content_div = html.Div([
 layout_index = html.Div([
 # Header div
     html.Div([
-        html.H1("Comparing prominent leg spinners", style = {'color': 'black', 'margin-top': '20px'})
+        html.H1("Comparing T20 International stats for leg spinners", style = {'color': 'black', 'margin-top': '20px'})
     ],className= 'row'),
 # Main body   
     html.Div([
         html.Div([
-            html.P("Average graph goes here"),
+            html.P("Career Bowling Economy"),
             dcc.Dropdown(
     id = 'player_picker',
     options= player_label,
     multi=True,
     style = {'width': '85%'},
-    value=[""]
+    value=[""],
+    placeholder = 'Pick one or more players',
     ),
     
-    dcc.Graph(id='average-graphic')
+    dcc.Graph(id='econ-graphic')
 
-        ],className='six columns'),
+        ],className='five columns'),
         html.Div([
-             html.P("Average graph goes here")
-        ],className='six columns')
+             html.P("Career Bowling Averages", style={'margin-bottom': '45px'}),
+             
+        dcc.Graph(id='avg-graphic')
+        ],className='five columns')
     ],className='row')
     # dcc.Link('Navigate to "/page-1"', href='/page-1'),
     # html.Br(),
