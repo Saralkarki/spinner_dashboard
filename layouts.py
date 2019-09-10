@@ -6,6 +6,10 @@ from data import (df, player_names)
 
 player_label = [{'label': i, 'value': i} for i in player_names]
 
+all_players = {'label': 'All', 'value': 'All'}
+player_label.append(dict(all_players))
+# print(player_label)
+
 url_bar_and_content_div = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content')
@@ -25,7 +29,7 @@ layout_index = html.Div([
     options= player_label,
     multi=True,
     style = {'width': '85%'},
-    value=[""],
+    value='All',
     placeholder = 'Pick one or more players',
     ),
     

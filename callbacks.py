@@ -9,20 +9,25 @@ import plotly.graph_objs as go
 ####
 ### Callback for Average
 names = df['Name'].unique()
+
+
 @app.callback(
     Output('econ-graphic', 'figure'),
     [Input('player_picker', 'value')]
 )
 def econ_graph(player_name):
     data = []
-    if '' in player_name:
+    if 'All' in player_name:
         data = df_econ
+        color = ['lightgrey']*9
+        color[1] = 'red'
     else:
         data = df[df['Name'].isin(player_name)]
+        color = 'lightgrey'
         # print(data)
         # print(type(data))
     figure = {
-        'data': [go.Bar(x=data['Name'],y=data['Econ'])]
+        'data': [go.Bar(x=data['Name'],y=data['Econ'], marker={'color': color})]
     }
     return figure
 @app.callback(
@@ -31,14 +36,17 @@ def econ_graph(player_name):
 )
 def avg_graph(player_name):
     data = []
-    if '' in player_name:
+    if 'All' in player_name:
         data = df
+        color = ['lightgrey']*9
+        color[1] = 'red'
     else:
         data = df[df['Name'].isin(player_name)]
-        print(data)
+        color = 'lightgrey'
+        # print(data)
         # print(type(data))
     figure = {
-        'data': [go.Bar(x=data['Name'],y=data['Ave'])]
+        'data': [go.Bar(x=data['Name'],y=data['Ave'], marker_color= color)]
     }
     return figure
     
