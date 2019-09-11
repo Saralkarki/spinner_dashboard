@@ -6,6 +6,9 @@ from main import app
 from layouts import layout_page_1, layout_page_2, layout_index
 import callbacks
 
+server = app.server
+app.config.suppress_callback_exceptions = True
+
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content')
@@ -22,4 +25,4 @@ def display_page(pathname):
         return layout_index
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
