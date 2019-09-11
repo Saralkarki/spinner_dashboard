@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output
 from data import(df,df_econ, df_adil_econ, df_sandy_econ, df_warne_econ, df_kumble_econ, 
                 df_rashid_econ, df_chahal_econ,df_mishra_econ,df_zampa_econ, df_tahir_econ)
 
-from app import app
+from main import app
 
 import plotly.graph_objs as go
 ####
