@@ -18,13 +18,13 @@ url_bar_and_content_div = html.Div([
 layout_index = html.Div([
 # Header div
     html.Div([
-        html.H1("Comparing T20 International stats for leg spinners", style = {'color': 'black', 'margin-top': '20px'})
+        html.H1("Comparing T20 International stats for leg spinners", style = {'color': 'black', 'margin-top': '20px'
+        ,'margin-left': '50px'})
     ],className= 'row'),
-# Main body   
+# Player Picker
+html.Div([
     html.Div([
-        html.Div([
-            html.P("Career Bowling Economy"),
-            dcc.Dropdown(
+        dcc.Dropdown(
     id = 'player_picker',
     options= player_label,
     multi=True,
@@ -32,20 +32,81 @@ layout_index = html.Div([
     value='All',
     placeholder = 'Pick one or more players',
     ),
-    
+    html.P("Please deselect 'All' if you want to compare individual players", style = {'color': 'black','font-style':'italic'}),
+    html.Br(),
+    html.P('''All of the data were collected from Cricinfo.com(as of July 8th,2019) and after meticulous cleaning of the data, 
+    here are the findings. The bowlers in the list are : Shane Warne, Anil Kumble, 
+    Rashid Khan, Yuzvendra Chahal, Amit Mishra, Imran Tahir, Adam Zampa, Adil Rashid, Rashid Khan 
+    and Sandeep Lamichhane.'''),
+    html.Br(),
+    html.P('Individual Stats', style={'font-size': '18px','font-weight':'bold'}),
+     dcc.Dropdown(
+    id = 'indi_player_picker',
+    options= player_label,
+    multi=False,
+    style = {'width': '85%'},
+    value='Sandeep Lamichhane',
+    placeholder = 'Pick a player',
+    clearable = False
+    ),
+    # html.Img(src='sandy.jpeg'),
+    dcc.Graph(id='indi-stats')
+    ],className = 'four columns'),
+    html.Div([
+        
+        html.P('Matches Played and Wickets taken', style = {'font-weight':'bold', 'margin-top':'90px', 'font-size': '32px'}),
+        html.Br(),
+        html.Strong('''Hover on the graph for more information. To see individual bars for wickets and matches played click on 
+        the label to disable and enable them''', style={'font-style':'italic', 'opacity': '0.6'}),
+        dcc.Graph(
+            id = 'match-played'
+        ),
+        
+    ], className = 'six columns')
+], className = 'row'),
+# Main body   
+    html.Div([
+        html.Div([
+            html.Br(),
+            html.P("Career Bowling Economy", style = {'font-weight': 'bold', 'font-size': '28px'}),
+            html.Br(),
+            html.P('''A player's economy rate is the number of runs they have conceded per over bowled. 
+            The lower the economy rate is, the better the bowler is performing. It is one of a number of statistics used to compare bowlers, commonly used alongside bowling 
+            average and strike rate to judge the overall performance of a bowler.'''),
+            
     dcc.Graph(id='econ-graphic')
 
         ],className='five columns'),
         html.Div([
-             html.P("Career Bowling Averages", style={'margin-bottom': '45px'}),
-             
+             html.Br(),
+             html.P("Career Bowling Averages", style = {'font-weight': 'bold', 'font-size': '28px'}),
+             html.Br(),
+             html.P('''The bowling average is one of a number of statistics used to compare bowlers in the sport of cricket. 
+            It is the ratio of runs conceded per wickets taken, 
+            meaning that the lower the bowling average is, the better the bowler is performing.'''),
+      html.Br(),       
         dcc.Graph(id='avg-graphic')
         ],className='five columns')
-    ],className='row')
+    ],className='row'),
+    html.Div([
+        html.Div([
+            html.P('Combined Bowling rate(CBR) vs Economy rate(Econ)', style= {'font-weight': 'bold', 'font-size': '28px'}),
+            html.Br(),
+            html.P('''However, it is widely recognized that average and economy rates have severe limitations in assessing the true 
+            abilities of a player’s performance. Therefore, we will be looking at the measure called Combined Bowling Rate(CBR) as 
+            developed by Lemmer. '''),
+            dcc.Link('For full article on CBR', href = 'http://bit.ly/2kvM6dv'),
+        ], className = 'six columns'),
+        html.Div([
+            dcc.Graph(id = 'cbr-vs-eco')
+        ], className = 'nine columns')
+        
+    ], className='row', style={'margin-top': '20px'}),
+
     # dcc.Link('Navigate to "/page-1"', href='/page-1'),
     # html.Br(),
     # dcc.Link('Navigate to "/page-2"', href='/page-2'),
-], className= 'offset-by-one columns')
+], className= 'offset-by-one columns twelve columns')
 
 
 # For other pages (not required right now)

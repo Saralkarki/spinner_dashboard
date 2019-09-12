@@ -9,6 +9,8 @@ import callbacks
 server = app.server
 app.config.suppress_callback_exceptions = True
 
+app.title = "Leg Spinner comparision"
+
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content')
@@ -25,4 +27,4 @@ def display_page(pathname):
         return layout_index
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
