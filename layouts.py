@@ -57,7 +57,8 @@ html.Div([
     dcc.Graph(id='indi-stats')
     ],className = 'four columns'),
     html.Div([
-        dcc.Link('For full article on how the data was extracted and analysed: click here', href = 'http://bit.ly/2kvM6dv',style={'text-decoration': 'none','font-size':24,'color':'black','font-weight': 'bold'} ),
+        # dcc.Link('Click here', href = "http://www.google.com"),
+        html.A('For full article on how the data was extracted and analysed: click here', href = 'http://bit.ly/2kvM6dv',target='_blank',style={'text-decoration': 'none','font-size':24,'color':'black','font-weight': 'bold'} ),
         html.P('Matches Played and Wickets taken', style = {'font-weight':'bold', 'margin-top':'90px', 'font-size': '32px'}),
         html.Br(),
         html.Strong('''Hover on the graph for more information. To see individual bars for wickets and matches played click on 
@@ -103,7 +104,7 @@ html.Div([
             html.P('''However, it is widely recognized that average and economy rates have severe limitations in assessing the true 
             abilities of a player’s performance. Therefore, we will be looking at the measure called Combined Bowling Rate(CBR) as 
             developed by Lemmer. '''),
-            dcc.Link('For full article on CBR', href = 'http://bit.ly/2kvM6dv'),
+            html.A('For full article on CBR', href = 'http://bit.ly/2kvM6dv', target='_blank'),
         ], className = 'six columns'),
         html.Div([
             dcc.Graph(id = 'cbr-vs-eco')
