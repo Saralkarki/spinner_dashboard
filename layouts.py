@@ -42,6 +42,8 @@ html.Div([
     and Sandeep Lamichhane.'''),
     html.Br(),
     html.P('Individual Stats', style={'font-size': '18px','font-weight':'bold'}),
+    html.P('For viewing individual stats of the bowlers change bowlers here'),
+    html.P('Hover on the graph to see more info. Click on the legengs to acitvate and deactivate the information', style = {'font-weight':'bold'}),
      dcc.Dropdown(
     id = 'indi_player_picker',
     options= player_label,
