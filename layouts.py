@@ -23,16 +23,18 @@ layout_index = html.Div([
     ],className= 'row'),
 # Player Picker
 html.Div([
+    html.H5('Select Players by clicking here:'),
     html.Div([
         dcc.Dropdown(
     id = 'player_picker',
     options= player_label,
     multi=True,
     style = {'width': '85%'},
-    value='All',
+    value=['Rashid Khan','Imran Tahir','Sandeep Lamichhane','Shane Warne'],
     placeholder = 'Pick one or more players',
     ),
-    html.P("Please deselect 'All' if you want to compare individual players", style = {'color': 'black','font-style':'italic'}),
+    html.P("To deselect click the (x) before the players name", style = {'color': 'black','font-style':'italic'}),
+    html.P('The Matches Played & wicket taken bar change accordingly. Scroll down to see Career bowling economy and average change'),
     html.Br(),
     html.P('''All of the data were collected from Cricinfo.com(as of July 8th,2019) and after meticulous cleaning of the data, 
     here are the findings. The bowlers in the list are : Shane Warne, Anil Kumble, 
@@ -53,11 +55,11 @@ html.Div([
     dcc.Graph(id='indi-stats')
     ],className = 'four columns'),
     html.Div([
-        
+        dcc.Link('For full article on how the data was extracted and analysed: click here', href = 'http://bit.ly/2kvM6dv',style={'text-decoration': 'none','font-size':24,'color':'black','font-weight': 'bold'} ),
         html.P('Matches Played and Wickets taken', style = {'font-weight':'bold', 'margin-top':'90px', 'font-size': '32px'}),
         html.Br(),
         html.Strong('''Hover on the graph for more information. To see individual bars for wickets and matches played click on 
-        the label to disable and enable them''', style={'font-style':'italic', 'opacity': '0.6'}),
+        the label to disable and enable them''', style={'font-style':'italic', 'opacity': '1', 'color':'black'}),
         dcc.Graph(
             id = 'match-played'
         ),
@@ -73,6 +75,8 @@ html.Div([
             html.P('''A player's economy rate is the number of runs they have conceded per over bowled. 
             The lower the economy rate is, the better the bowler is performing. It is one of a number of statistics used to compare bowlers, commonly used alongside bowling 
             average and strike rate to judge the overall performance of a bowler.'''),
+            html.Strong('''Hover on the graph for more information. To see individual bars for wickets and matches played click on 
+        the label to disable and enable them''', style={'font-style':'italic', 'opacity': '1', 'color':'black'}),
             
     dcc.Graph(id='econ-graphic')
 
@@ -84,6 +88,8 @@ html.Div([
              html.P('''The bowling average is one of a number of statistics used to compare bowlers in the sport of cricket. 
             It is the ratio of runs conceded per wickets taken, 
             meaning that the lower the bowling average is, the better the bowler is performing.'''),
+            html.Strong('''Hover on the graph for more information. To see individual bars for wickets and matches played click on 
+        the label to disable and enable them''', style={'font-style':'italic', 'opacity': '1', 'color':'black'}),
       html.Br(),       
         dcc.Graph(id='avg-graphic')
         ],className='five columns')
